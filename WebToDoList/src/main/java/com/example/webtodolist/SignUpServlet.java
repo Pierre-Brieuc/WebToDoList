@@ -1,31 +1,53 @@
 package com.example.webtodolist;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 @WebServlet(name = "signUpServlet", value = "/sign-up-servlet")
 public class SignUpServlet extends HttpServlet {
+    private DataSource dataSource;
+    private DataSource getDataSource() throws NamingException {
+        String jndi = "java:comp/env/jdbc/webtodolist_db";
+        Context context = new InitialContext();
+        DataSource dataSource = (DataSource) context.lookup(jndi);
+        return dataSource;
+    }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String newName = req.getParameter("name");
         String newPassword = req.getParameter("password");
         String newRole = req.getParameter("role");
 
-        resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
-        out.println("<html><body>");
-        out.println("<h1> You are now registered </h1>");
-        out.println("</body></html>");
-
-        if (newRole == "student") {
-            Student newStudent = new Student(newName,newPassword);
-        } else if (newRole == "instructor") {
-            Instructor newInstructor = new Instructor(newName, newPassword);
+        resp.setContentType("text/html");
+        Connection myConn=null;
+        PreparedStatement preparedStmt = null;
+        ResultSet myRs=null;
+        try{
+            dataSource= getDataSource();
+            myConn= dataSource.getConnection();
+            String query = "INSERT INTO account(accountname,account_password,account_role) VALUES (?,?,?)";
+            preparedStmt = myConn.prepareStatement(query);
+            preparedStmt.setString(1, newName);
+            preparedStmt.setString(2, newPassword);
+            preparedStmt.setString(3, newRole);
+            preparedStmt.execute();
+            //this.close(myConn, preparedStmt, null, preparedStmt);
+        }catch(Exception exc){
+            System.out.println(exc.getMessage());
         }
     }
 
