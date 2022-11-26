@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "loginServlet", value = "/login-servlet")
 public class LoginServlet extends HttpServlet {
+/*
     private String message;
 
     public void init() {
@@ -24,7 +25,7 @@ public class LoginServlet extends HttpServlet {
         out.println("<h1>" + message + "</h1>");
         out.println("</body></html>");
     }
-
+*/
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String n = req.getParameter("name");

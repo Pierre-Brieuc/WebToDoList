@@ -10,6 +10,6 @@
         Password:<input type="password" name="password" />
         <input type="submit" value="OK" />
     </form>
-        <a href="hello-servlet">Hello Servlet</a>
+        <a href="test-servlet">Hello Servlet</a>
     </body>
 </html>

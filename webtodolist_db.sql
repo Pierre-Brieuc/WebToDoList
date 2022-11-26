@@ -36,3 +36,4 @@ INSERT INTO todo VALUES (2,"Marie");
 INSERT INTO todo VALUES (3,"Lili");
 
 select * from todo;
+select * from account;
