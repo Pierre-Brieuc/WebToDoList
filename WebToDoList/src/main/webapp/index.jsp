@@ -4,10 +4,12 @@
     <head>
         <title>JSP - Hello World</title>
     </head>
-
     <body>
-        <h1><%= "Hello World!" %></h1>
-        <br/>
+    <form action="login-servlet" method="post">
+        Username: <input type="text" name="name" />
+        Password:<input type="password" name="password" />
+        <input type="submit" value="OK" />
+    </form>
         <a href="hello-servlet">Hello Servlet</a>
     </body>
 </html>

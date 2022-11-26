@@ -34,3 +34,5 @@ INSERT INTO todo VALUES (1,"Léo");
 INSERT INTO todo VALUES (4,"Joe");
 INSERT INTO todo VALUES (2,"Marie");
 INSERT INTO todo VALUES (3,"Lili");
+
+select * from todo;

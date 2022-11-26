@@ -1,20 +1,27 @@
 package com.example.webtodolist;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.sql.DataSource;
+import java.io.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 
+@WebServlet(name = "helloServlet", value = "/hello-servlet")
+public class HelloServlet extends HttpServlet {
+    private String message;
 
-@WebServlet("/Helloservlet")
-public class Helloservlet extends HttpServlet {
-    private DataSource dataSource;
-    private DataSource getDataSource() throws NamingException {
-        String jndi="jdbc:mysql://localhost:3306/webtodolist_db?useSSL=false" ;
-        Context context = new InitialContext();
-        DataSource dataSource = (DataSource) context.lookup(jndi);
-        return dataSource;
+    public void init() {
+        message = "Hello World!";
+    }
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("text/html");
+
+        // Hello
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h1>" + message + "</h1>");
+        out.println("</body></html>");
+    }
+
+    public void destroy() {
     }
 }
