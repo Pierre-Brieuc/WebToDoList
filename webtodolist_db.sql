@@ -11,7 +11,7 @@ CREATE TABLE account (
 );
 
 CREATE TABLE todo (
-	id_todo int PRIMARY KEY,
+	id_todo int PRIMARY KEY auto_increment,
 	todo_description varchar(1000)
 );
 
@@ -25,4 +25,8 @@ CREATE TABLE instructor_students_connection (
     id_student int     /*account_role = student*/
 );
 
-select * from account;
+select * from todo;
+
+INSERT INTO todo VALUES (1,"abc");
+INSERT INTO todo VALUES (2,"Je suis");
+INSERT INTO todo VALUES (3,"lalala");

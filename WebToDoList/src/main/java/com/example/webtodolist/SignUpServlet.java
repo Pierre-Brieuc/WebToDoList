@@ -35,7 +35,6 @@ public class SignUpServlet extends HttpServlet {
         resp.setContentType("text/html");
         Connection myConn=null;
         PreparedStatement preparedStmt = null;
-        ResultSet myRs=null;
         try{
             dataSource= getDataSource();
             myConn= dataSource.getConnection();
@@ -45,12 +44,25 @@ public class SignUpServlet extends HttpServlet {
             preparedStmt.setString(2, newPassword);
             preparedStmt.setString(3, newRole);
             preparedStmt.execute();
-            //this.close(myConn, preparedStmt, null, preparedStmt);
+            this.close(myConn, null, preparedStmt, null);
         }catch(Exception exc){
             System.out.println(exc.getMessage());
         }
     }
 
     public void destroy() {
+    }
+
+    private void close(Connection myConn, Statement myStmt, PreparedStatement preparedStmt, ResultSet myRs) {
+        try{
+            if(myStmt!=null)
+                myStmt.close();
+            if(myRs!=null)
+                myRs.close();
+            if(myConn!=null)
+                myConn.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }

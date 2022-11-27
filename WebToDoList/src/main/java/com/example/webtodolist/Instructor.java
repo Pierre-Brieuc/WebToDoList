@@ -10,8 +10,10 @@ public class Instructor extends Account {
         super(username, userPassword, "instructor");
     }
 
-    // Fonction edit
-    // Fonction Create
-    // Fonction Delete
-    // Fonction voir liste
+    public String toString () {
+        return "Instructor ["+getId_user()+
+                ", "+getUsername()+
+                ", "+getUserPassword()+
+                ", "+getRole();
+    }
 }

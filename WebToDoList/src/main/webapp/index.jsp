@@ -5,12 +5,9 @@
         <title>JSP - Hello World</title>
     </head>
     <body>
-    <form action="sign-up-servlet" method="post">
-        Username: <input type="text" name="name" />
-        Password:<input type="password" name="password" />
-        Role:<input type="select" name="role" />
-        <input type="submit" value="OK" />
-    </form>
+        <a href="login.jsp">Login</a>
+        <a href="sign-up.jsp">Sign up</a>
         <a href="test-servlet">Hello Servlet</a>
+        <a href="instructor-page.jsp">Hello Servlet</a>
     </body>
 </html>
