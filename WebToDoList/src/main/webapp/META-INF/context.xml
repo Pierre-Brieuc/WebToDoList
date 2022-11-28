@@ -5,5 +5,5 @@
               driverClassName="com.mysql.cj.jdbc.Driver"
               maxTotal="20" maxIdle="5" maxWaitMillis="10000"
               username="root" password=""
-              url="jdbc:mysql://localhost:3306/webtodolist_db?useSSL=false"/>
+              url="jdbc:mysql://127.0.0.1:3306/webtodolist_db?useSSL=false"/>
 </Context>

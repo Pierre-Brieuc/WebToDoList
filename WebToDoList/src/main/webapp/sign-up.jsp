@@ -14,8 +14,12 @@
         <form action="sign-up-servlet" method="post">
             Username: <input type="text" name="name" />
             Password:<input type="password" name="password" />
-            Role:<input type="select" name="role" />
-            <input type="submit" value="OK" />
+            Role :
+            <select name="role">
+                <option value="student" selected>student</option>
+                <option value="instructor">instructor</option>
+            </select>
+            <input type="submit" value="OK"/>
         </form>
     </body>
 </html>

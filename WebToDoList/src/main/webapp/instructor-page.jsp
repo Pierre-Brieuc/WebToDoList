@@ -1,4 +1,5 @@
-<%@ page import="com.example.webtodolist.Todo" %><%--
+<%@ page import="com.example.webtodolist.Todo" %>
+<%--
   Created by IntelliJ IDEA.
   User: PierreB
   Date: 27/11/2022
@@ -17,8 +18,18 @@
 
     <body>
         <h1>Instructor</h1>
-        Je suis visible<br>
         <!-- ${TODO_LIST}-->
-        <%= theTodos %>
+        <%for (int i=0; i<theTodos.size(); i++) {%>
+            <%= theTodos.get(i).getId_todo() %>
+            <%= theTodos.get(i).getDescription() %>
+            <form action="instructor-controller-servlet">
+                <input type="submit" value="edit" formmethod="put"/>
+                <input type="submit" value="delete" formmethod="delete"/>
+            </form>
+            <br>
+        <%};%>
+        <form action="instructor-controller-servlet">
+            <input type="submit" value="create" formmethod="post"/>
+        </form>
     </body>
 </html>

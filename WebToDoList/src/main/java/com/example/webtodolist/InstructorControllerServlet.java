@@ -12,8 +12,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import javax.sql.DataSource;
 
-@WebServlet(name = "todoControllerServlet", value = "/todo-controller-servlet")
-public class TodoControllerServlet extends HttpServlet {
+@WebServlet(name = "instructorControllerServlet", value = "/instructor-controller-servlet")
+public class InstructorControllerServlet extends HttpServlet {
     private DataSource dataSource;
     private TodoDBUtil todoDBUtil;
 
@@ -39,11 +39,7 @@ public class TodoControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            PrintWriter out = resp.getWriter();
-            resp.setContentType("text/plain");
-            out.println("Bonjour");
             listTodos(req,resp);
-            out.println("Au revoir");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -59,18 +55,21 @@ public class TodoControllerServlet extends HttpServlet {
     // Create todo
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("create");
+
         String newDescription = req.getParameter("description");
         resp.setContentType("text/html");
         Connection myConn=null;
         PreparedStatement preparedStmt = null;
         try{
-            dataSource= getDataSource();
-            myConn= dataSource.getConnection();
+            dataSource = getDataSource();
+            myConn = dataSource.getConnection();
             String query = "INSERT INTO todo(todo_description) VALUES (?)";
             preparedStmt = myConn.prepareStatement(query);
             preparedStmt.setString(1, newDescription);
             preparedStmt.execute();
             this.close(myConn, null, preparedStmt, null);
+            doGet(req,resp);
         }catch(Exception exc){
             System.out.println(exc.getMessage());
         }
@@ -79,6 +78,7 @@ public class TodoControllerServlet extends HttpServlet {
     // Update todo
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("update");
         String idTodo = req.getParameter("idTodo");
         String newDescription = req.getParameter("description");
         resp.setContentType("text/html");
@@ -93,6 +93,7 @@ public class TodoControllerServlet extends HttpServlet {
             preparedStmt.setString(2, idTodo);
             preparedStmt.execute();
             this.close(myConn, null, preparedStmt, null);
+            doGet(req,resp);
         }catch(Exception exc){
             System.out.println(exc.getMessage());
         }
@@ -101,6 +102,8 @@ public class TodoControllerServlet extends HttpServlet {
     // Delete todo
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("delete");
+
         String idTodo = req.getParameter("idTodo");
         resp.setContentType("text/html");
         Connection myConn=null;
@@ -113,6 +116,7 @@ public class TodoControllerServlet extends HttpServlet {
             preparedStmt.setString(1, idTodo);
             preparedStmt.execute();
             this.close(myConn, null, preparedStmt, null);
+            doGet(req,resp);
         }catch(Exception exc){
             System.out.println(exc.getMessage());
         }
@@ -126,6 +130,8 @@ public class TodoControllerServlet extends HttpServlet {
                 myRs.close();
             if(myConn!=null)
                 myConn.close();
+            if(preparedStmt!=null)
+                preparedStmt.close();
         }catch(Exception e){
             System.out.println(e.getMessage());
         }

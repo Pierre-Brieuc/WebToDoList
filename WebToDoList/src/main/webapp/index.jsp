@@ -5,9 +5,7 @@
         <title>JSP - Hello World</title>
     </head>
     <body>
-        <a href="login.jsp">Login</a>
-        <a href="sign-up.jsp">Sign up</a>
-        <a href="test-servlet">Hello Servlet</a>
-        <a href="instructor-page.jsp">Hello Servlet</a>
+        <a href="login-servlet">Login</a>
+        <a href="sign-up-servlet">Sign up</a>
     </body>
 </html>

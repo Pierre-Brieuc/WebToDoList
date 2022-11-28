@@ -15,17 +15,7 @@ CREATE TABLE todo (
 	todo_description varchar(1000)
 );
 
-CREATE TABLE account_todo_connection (
-	id_account int,
-    id_todo int
-);
-
-CREATE TABLE instructor_students_connection (
-	id_instructor int, /*account_role = instructor*/
-    id_student int     /*account_role = student*/
-);
-
-select * from todo;
+select * from account;
 
 INSERT INTO todo VALUES (1,"abc");
 INSERT INTO todo VALUES (2,"Je suis");
