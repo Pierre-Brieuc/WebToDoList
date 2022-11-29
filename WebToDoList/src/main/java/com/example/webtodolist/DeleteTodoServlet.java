@@ -1,19 +1,25 @@
 package com.example.webtodolist;
 
-import java.io.*;
-import java.sql.*;
-import java.util.List;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.List;
 
-@WebServlet(name = "instructorControllerServlet", value = "/instructor-controller-servlet")
-public class InstructorControllerServlet extends HttpServlet {
+
+@WebServlet(name = "deleteTodoServlet", value = "/delete-todo-servlet")
+public class DeleteTodoServlet extends HttpServlet {
     private DataSource dataSource;
     private TodoDBUtil todoDBUtil;
 
@@ -52,8 +58,41 @@ public class InstructorControllerServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    // Create todo
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req,resp);
+        System.out.println("Delete");
+        String idTodo = req.getParameter("idTodo");
+        resp.setContentType("text/html");
+        Connection myConn=null;
+        PreparedStatement preparedStmt = null;
+        try{
+            dataSource= getDataSource();
+            myConn= dataSource.getConnection();
+            String query = "DELETE FROM todo WHERE id_todo=?";
+            preparedStmt = myConn.prepareStatement(query);
+            preparedStmt.setString(1, idTodo);
+            preparedStmt.execute();
+            this.close(myConn, null, preparedStmt, null);
+            doGet(req,resp);
+        }catch(Exception exc){
+            System.out.println(exc.getMessage());
+        }
+    }
+
+    private void close(Connection myConn, Statement myStmt, PreparedStatement preparedStmt, ResultSet myRs) {
+        try{
+            if(myStmt!=null)
+                myStmt.close();
+            if(myRs!=null)
+                myRs.close();
+            if(myConn!=null)
+                myConn.close();
+            if(preparedStmt!=null)
+                preparedStmt.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }
+

@@ -36,11 +36,12 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+
             Cookie [] cookies = req.getCookies();
             if(cookies!= null){
                 for(Cookie cookie:cookies){
-                    if(cookie.getName().equals("prenom"))
-                        req.setAttribute("prenom", cookie.getValue()) ;
+                    if(cookie.getName().equals("accountname"))
+                        req.setAttribute("accountname", cookie.getValue()) ;
                 }
             }
             RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
@@ -54,7 +55,6 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String nameToCheck = req.getParameter("name");
         String passwordToCheck = req.getParameter("password");
-
         Connection myConn=null;
         Statement myStmt = null;
         ResultSet myRs= null;
@@ -68,18 +68,18 @@ public class LoginServlet extends HttpServlet {
                 if (nameToCheck.equals(myRs.getString("accountname")) &&
                         passwordToCheck.equals(myRs.getString("account_password"))){
 
-                    Cookie cookie = new Cookie("prenom", nameToCheck);
+                    Cookie cookie = new Cookie("accountname", nameToCheck);
                     cookie.setMaxAge(60*60*24) ; // in seconds, here for 24 hours
                     resp.addCookie(cookie) ;
 
-                    if (myRs.getString("account_password").equals("instructor")) {
+                    if (myRs.getString("account_role").equals("instructor")) {
                         close(myConn,myStmt,null,myRs);
                         HttpSession session = req.getSession();
-                        req.getRequestDispatcher("/instructor-page.jsp").forward(req, resp);
+                        req.getRequestDispatcher("instructor-controller-servlet").forward(req, resp);
                     } else{
                         close(myConn,myStmt,null,myRs);
                         HttpSession session = req.getSession();
-                        req.getRequestDispatcher("/student-page.jsp").forward(req, resp);
+                        req.getRequestDispatcher("student-controller-servlet").forward(req, resp);
                     }
 
                 }

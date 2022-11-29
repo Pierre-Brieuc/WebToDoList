@@ -15,7 +15,7 @@ CREATE TABLE todo (
 	todo_description varchar(1000)
 );
 
-select * from account;
+select * from todo;
 
 INSERT INTO todo VALUES (1,"abc");
 INSERT INTO todo VALUES (2,"Je suis");

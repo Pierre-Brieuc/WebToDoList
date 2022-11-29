@@ -21,7 +21,7 @@ public class TodoDBUtil {
         try {
             myConn = dataSource.getConnection();
             myStmt= myConn.createStatement();
-            String sql= "select * from todo";
+            String sql= "SELECT * FROM todo";
             myRs = myStmt.executeQuery(sql);
             while(myRs.next()){
                 int idTodo = myRs.getInt("id_todo");

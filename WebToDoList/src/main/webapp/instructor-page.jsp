@@ -21,18 +21,22 @@
         <form action="logout-servlet" method="get">
             <input type="submit" value="Log out"/>
         </form>
-        <form action="instructor-controller-servlet">
-            <input type="submit" value="create new todo" formmethod="post"/>
+        <form action="create-todo-servlet">
+            <input type="submit" value="create new todo" formmethod="get"/>
         </form>
         <!-- ${TODO_LIST}-->
-        <%for (int i=0; i<theTodos.size(); i++) {%>
-            Todo <%= theTodos.get(i).getId_todo() %>
-            <%= theTodos.get(i).getDescription() %>
-            <form action="instructor-controller-servlet">
-                <input type="submit" value="edit" formmethod="put"/>
-                <input type="submit" value="delete" formmethod="delete"/>
-            </form>
-            <br>
+        <% if (theTodos != null) {%>
+            <%for (int i=0; i<theTodos.size(); i++) {%>
+                <form>
+                Todo <%= theTodos.get(i).getId_todo() %>
+                <%= theTodos.get(i).getDescription() %>
+                    <input type="submit" value="edit" formmethod="post" formaction="edit-todo-servlet"/>
+                    <input type="submit" value="delete" formmethod="post" formaction="delete-todo-servlet"/>
+                </form>
+                <br>
+            <%};%>
+        <%} else {%>
+            <p>No todo</p>
         <%};%>
     </body>
 </html>

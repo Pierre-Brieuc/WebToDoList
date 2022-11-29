@@ -27,4 +27,8 @@ public class Todo {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String toString () {
+        return "Todo " + getId_todo() + " / description : " + getDescription();
+    }
 }
