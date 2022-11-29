@@ -4,8 +4,17 @@
     <head>
         <title>JSP - Hello World</title>
     </head>
+    <% String errorMessage = (String)request.getAttribute("ERROR"); %>
     <body>
-        <a href="login-servlet">Login</a>
-        <a href="sign-up-servlet">Sign up</a>
+    <!-- ${ERROR}-->
+    <%if (errorMessage != null){%>
+        <%=errorMessage%>
+    <%};%>
+    <form action="login-servlet" method="post">
+            Username: <input type="text" name="name" />
+            Password:<input type="password" name="password" />
+            <input type="submit" value="OK" />
+        </form>
+        <a href="registration-servlet">Registration ?</a>
     </body>
 </html>

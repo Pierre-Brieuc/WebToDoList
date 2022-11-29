@@ -18,9 +18,15 @@
 
     <body>
         <h1>Instructor</h1>
+        <form action="logout-servlet" method="get">
+            <input type="submit" value="Log out"/>
+        </form>
+        <form action="instructor-controller-servlet">
+            <input type="submit" value="create new todo" formmethod="post"/>
+        </form>
         <!-- ${TODO_LIST}-->
         <%for (int i=0; i<theTodos.size(); i++) {%>
-            <%= theTodos.get(i).getId_todo() %>
+            Todo <%= theTodos.get(i).getId_todo() %>
             <%= theTodos.get(i).getDescription() %>
             <form action="instructor-controller-servlet">
                 <input type="submit" value="edit" formmethod="put"/>
@@ -28,8 +34,5 @@
             </form>
             <br>
         <%};%>
-        <form action="instructor-controller-servlet">
-            <input type="submit" value="create" formmethod="post"/>
-        </form>
     </body>
 </html>

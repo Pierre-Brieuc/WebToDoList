@@ -11,9 +11,9 @@
         <title>Title</title>
     </head>
     <body>
-        <form action="sign-up-servlet" method="post">
-            Username: <input type="text" name="name" />
-            Password:<input type="password" name="password" />
+        <form action="registration-servlet" method="post">
+            Username: <input type="text" name="name" required/>
+            Password:<input type="password" name="password" minlength="4" required/>
             Role :
             <select name="role">
                 <option value="student" selected>student</option>

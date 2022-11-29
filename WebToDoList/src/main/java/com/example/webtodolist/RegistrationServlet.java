@@ -11,14 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-@WebServlet(name = "signUpServlet", value = "/sign-up-servlet")
-public class SignUpServlet extends HttpServlet {
+@WebServlet(name = "registrationUpServlet", value = "/registration-servlet")
+public class RegistrationServlet extends HttpServlet {
     private DataSource dataSource;
     private DataSource getDataSource() throws NamingException {
         String jndi = "java:comp/env/jdbc/webtodolist_db";
@@ -41,7 +40,7 @@ public class SignUpServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/sign-up.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/registration.jsp");
             dispatcher.forward(req, resp);
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,29 +54,35 @@ public class SignUpServlet extends HttpServlet {
         String newRole = req.getParameter("role");
 
         try {
-            if (isNameAvailable(newName) && !newPassword.isEmpty()) {
-                Connection myConn=null;
-                PreparedStatement preparedStmt = null;
-                try{
-                    dataSource= getDataSource();
-                    myConn= dataSource.getConnection();
-                    String query = "INSERT INTO account(accountname,account_password,account_role) VALUES (?,?,?)";
-                    preparedStmt = myConn.prepareStatement(query);
-                    preparedStmt.setString(1, newName);
-                    preparedStmt.setString(2, newPassword);
-                    preparedStmt.setString(3, newRole);
-                    preparedStmt.execute();
-                    this.close(myConn, null, preparedStmt, null);
+            if (isNameAvailable(newName)) {
+                if (!newPassword.isEmpty()) {
+                    Connection myConn=null;
+                    PreparedStatement preparedStmt = null;
+                    try{
+                        dataSource= getDataSource();
+                        myConn= dataSource.getConnection();
+                        String query = "INSERT INTO account(accountname,account_password,account_role) VALUES (?,?,?)";
+                        preparedStmt = myConn.prepareStatement(query);
+                        preparedStmt.setString(1, newName);
+                        preparedStmt.setString(2, newPassword);
+                        preparedStmt.setString(3, newRole);
+                        preparedStmt.execute();
+                        this.close(myConn, null, preparedStmt, null);
 
-                    if (newRole.equals("instructor")){
-                        req.getRequestDispatcher("/instructor-controller-servlet").forward(req, resp);
-                    } else {
-                        req.getRequestDispatcher("/student-controller-servlet").forward(req, resp);
+                        if (newRole.equals("instructor")){
+                            req.getRequestDispatcher("/instructor-controller-servlet").forward(req, resp);
+                        } else {
+                            req.getRequestDispatcher("/student-controller-servlet").forward(req, resp);
+                        }
+                    }catch(Exception exc){
+                        System.out.println(exc.getMessage());
                     }
-                }catch(Exception exc){
-                    System.out.println(exc.getMessage());
+                } else {
+                    // The password cannot be empty
+                    doGet(req,resp);
                 }
             } else {
+                // The name is not available
                 doGet(req,resp);
             }
         } catch (Exception e) {
@@ -98,11 +103,9 @@ public class SignUpServlet extends HttpServlet {
             while(myRs.next()){
                 String accountname = myRs.getString("accountname");
                 if (accountname.equals(newName)){
-                    System.out.println("false");
                     return false;
                 }
             }
-            System.out.println("true");
             return true;
         } finally{
             close(myConn,myStmt,null,myRs);

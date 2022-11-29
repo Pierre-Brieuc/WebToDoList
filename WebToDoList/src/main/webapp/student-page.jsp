@@ -7,10 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-    Student
-</body>
+    <head>
+        <title>Title</title>
+    </head>
+    <body>
+        <form action="logout-servlet" method="get">
+            <input type="submit" value="Log out"/>
+        </form>
+    </body>
 </html>
