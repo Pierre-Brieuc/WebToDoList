@@ -112,8 +112,7 @@ public class RegistrationServlet extends HttpServlet {
         }
     }
 
-    public void destroy() {
-    }
+
 
     private void close(Connection myConn, Statement myStmt, PreparedStatement preparedStmt, ResultSet myRs) {
         try{

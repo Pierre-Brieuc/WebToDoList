@@ -38,27 +38,20 @@ public class EditTodoServlet extends HttpServlet {
     // Get todolist from server
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
-            listTodos(req,resp);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+        String tempId = req.getParameter("id");
+        String tempDesc = req.getParameter("description");
+        req.setAttribute("id",tempId);
+        req.setAttribute("description",tempDesc);
 
-    private void listTodos(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        List<Todo> todos = todoDBUtil.getTodos();
-        request.setAttribute("TODO_LIST", todos);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/instructor-page.jsp");
-        dispatcher.forward(request, response);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/edit-todo.jsp");
+        dispatcher.forward(req, resp);
     }
 
     // update todo
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("update");
         String idTodo = req.getParameter("idTodo");
         String newDescription = req.getParameter("description");
-        resp.setContentType("text/html");
         Connection myConn=null;
         PreparedStatement preparedStmt = null;
         try{
@@ -69,10 +62,12 @@ public class EditTodoServlet extends HttpServlet {
             preparedStmt.setString(1, newDescription);
             preparedStmt.setString(2, idTodo);
             preparedStmt.execute();
-            this.close(myConn, null, preparedStmt, null);
-            doGet(req,resp);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("instructor-controller-servlet");
+            dispatcher.forward(req, resp);
         }catch(Exception exc){
             System.out.println(exc.getMessage());
+        } finally {
+            this.close(myConn, null, preparedStmt, null);
         }
     }
 

@@ -15,36 +15,20 @@ import java.io.IOException;
 
 @WebServlet(name = "logoutServlet", value = "/logout-servlet")
 public class LogoutServlet extends HttpServlet {
-    private DataSource dataSource;
-    private DataSource getDataSource() throws NamingException {
-        String jndi = "java:comp/env/jdbc/webtodolist_db";
-        Context context = new InitialContext();
-        DataSource dataSource = (DataSource) context.lookup(jndi);
-        return dataSource;
+    private static final long serialVersionUID = 1L;
+
+    public LogoutServlet() {
+        super();
     }
 
-    @Override
-    public void init() throws ServletException {
-        // TODO Auto-generated method stub
-        super.init();
-        try {
-            dataSource = getDataSource();
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/logout.jsp").forward(request, response);
     }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            //session.removeAttribute("user");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request, response);
-        }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        session.invalidate();
+        response.sendRedirect("instructorControllerServlet");
     }
 
-    public void destroy() {
-    }
 }

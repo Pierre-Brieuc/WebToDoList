@@ -11,11 +11,10 @@
         <title>Title</title>
     </head>
     <body>
-        <form action="instructor-controller-servlet">
-            <input type="submit" value="edit" formmethod="put"/>
-            <input type="submit" value="delete" formmethod="delete"/>
-            <input type="submit" value="create new todo" formmethod="post"/>
+        <form action="creator-todo-servlet">
+            Write a description of the todo: <input type="text" value=""/>
+            <input type="submit" value="create" formmethod="post"/>
         </form>
+        <a href="/instructor-controller-servlet">Back to the list</a>
     </body>
-    <a href="">Back to the list</a>
 </html>

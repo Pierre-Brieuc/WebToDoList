@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import javax.sql.DataSource;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.*;
 
 @WebServlet(name = "loginServlet", value = "/login-servlet")
@@ -44,7 +43,7 @@ public class LoginServlet extends HttpServlet {
                         req.setAttribute("accountname", cookie.getValue()) ;
                 }
             }
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/login.jsp");
             dispatcher.forward(req, resp);
         } catch (Exception e) {
             e.printStackTrace();
@@ -58,6 +57,7 @@ public class LoginServlet extends HttpServlet {
         Connection myConn=null;
         Statement myStmt = null;
         ResultSet myRs= null;
+        boolean isGood = false;
         try {
             dataSource= getDataSource();
             myConn = dataSource.getConnection();
@@ -73,20 +73,23 @@ public class LoginServlet extends HttpServlet {
                     resp.addCookie(cookie) ;
 
                     if (myRs.getString("account_role").equals("instructor")) {
-                        close(myConn,myStmt,null,myRs);
                         HttpSession session = req.getSession();
+                        isGood = true;
+                        req.setAttribute("name",nameToCheck);
                         req.getRequestDispatcher("instructor-controller-servlet").forward(req, resp);
-                    } else{
-                        close(myConn,myStmt,null,myRs);
+                    } else if (myRs.getString("account_role").equals("student")) {
                         HttpSession session = req.getSession();
+                        isGood = true;
+                        req.setAttribute("name",nameToCheck);
                         req.getRequestDispatcher("student-controller-servlet").forward(req, resp);
                     }
-
                 }
             }
-            String errorMessage = "wrong username or password";
-            req.setAttribute("ERROR",errorMessage);
-            doGet(req, resp);
+            if (!isGood){
+                String errorMessage = "wrong username or password";
+                req.setAttribute("ERROR",errorMessage);
+                doGet(req, resp);
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (NamingException e) {
@@ -109,8 +112,5 @@ public class LoginServlet extends HttpServlet {
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-    }
-
-    public void destroy() {
     }
 }

@@ -40,6 +40,8 @@ public class StudentControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+            String name_account = req.getParameter("name");
+            req.setAttribute("name",name_account);
             listTodos(req,resp);
         } catch (Exception e) {
             e.printStackTrace();

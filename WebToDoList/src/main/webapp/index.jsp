@@ -2,19 +2,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>JSP - Hello World</title>
+        <title>Login / Registration</title>
     </head>
-    <% String errorMessage = (String)request.getAttribute("ERROR"); %>
     <body>
-    <!-- ${ERROR}-->
-    <%if (errorMessage != null){%>
-        <%=errorMessage%>
-    <%};%>
-    <form action="login-servlet" method="post">
-            Username: <input type="text" name="name" />
-            Password:<input type="password" name="password" />
-            <input type="submit" value="OK" />
-        </form>
-        <a href="registration-servlet">Registration ?</a>
+        <a href="login.jsp">login</a>
+        <a href="registration.jsp">register</a>
     </body>
 </html>

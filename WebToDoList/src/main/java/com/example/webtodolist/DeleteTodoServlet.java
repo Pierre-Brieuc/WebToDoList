@@ -58,12 +58,10 @@ public class DeleteTodoServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    // Create todo
+    // Delete todo
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Delete");
-        String idTodo = req.getParameter("idTodo");
-        resp.setContentType("text/html");
+        String idTodo = req.getParameter("id");
         Connection myConn=null;
         PreparedStatement preparedStmt = null;
         try{

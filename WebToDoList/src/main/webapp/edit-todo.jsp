@@ -1,36 +1,32 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="com.example.webtodolist.Todo" %>
 <%--
   Created by IntelliJ IDEA.
   User: PierreB
-  Date: 26/11/2022
-  Time: 16:55
+  Date: 27/11/2022
+  Time: 18:27
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.*" %>
+
 <html>
     <head>
         <title>Title</title>
     </head>
+
     <body>
         <div align="center">
-            <h1>Veuillez vous identifier</h1>
+            <h1>Edit your todo</h1>
         </div>
-        <form method="POST" action="registration-servlet">
+        <form method="POST" action="edit-todo-servlet">
             <table align="center">
                 <tr>
-                    <td>Login :</td>
-                    <td><input type="text" name="name"></td>
+                    <td align="center">To do ${id}</td>
                 </tr>
                 <tr>
-                    <td>Mot de passe :</td>
-                    <td><input type="password" name="password" value=""></td>
-                </tr>
-                <tr>
-                    <td>Role :</td>
-                    <td><select name="role" >
-                            <option value="student" selected>student</option>
-                            <option value="instructor">instructor</option>
-                        </select>
-                    </td>
+                    <td>Description :</td>
+                    <td><input type="text" name="password" value="${description}"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="Valider"></td>
