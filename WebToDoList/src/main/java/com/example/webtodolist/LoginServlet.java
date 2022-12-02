@@ -52,8 +52,8 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String nameToCheck = req.getParameter("name");
-        String passwordToCheck = req.getParameter("password");
+        String nameToCheck = req.getParameter("j_username");
+        String passwordToCheck = req.getParameter("j_password");
         Connection myConn=null;
         Statement myStmt = null;
         ResultSet myRs= null;

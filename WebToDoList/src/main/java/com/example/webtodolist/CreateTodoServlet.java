@@ -39,6 +39,8 @@ public class CreateTodoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+            String name_account = req.getParameter("name");
+            req.setAttribute("name",name_account);
             req.getRequestDispatcher("/create-todo.jsp").forward(req, resp);
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,7 +52,6 @@ public class CreateTodoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String newDescription = req.getParameter("description");
-        resp.setContentType("text/html");
         Connection myConn=null;
         PreparedStatement preparedStmt = null;
         try{
@@ -60,10 +61,13 @@ public class CreateTodoServlet extends HttpServlet {
             preparedStmt = myConn.prepareStatement(query);
             preparedStmt.setString(1, newDescription);
             preparedStmt.execute();
-            this.close(myConn, null, preparedStmt, null);
-            doGet(req,resp);
+            String name_account = req.getParameter("name");
+            req.setAttribute("name",name_account);
+            req.getRequestDispatcher("instructor-controller-servlet").forward(req, resp);
         }catch(Exception exc){
             System.out.println(exc.getMessage());
+        } finally {
+            this.close(myConn, null, preparedStmt, null);
         }
     }
 

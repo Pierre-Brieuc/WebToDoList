@@ -56,6 +56,8 @@ public class InstructorControllerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name_account = req.getParameter("name");
+        req.setAttribute("name",name_account);
         doGet(req,resp);
     }
 }

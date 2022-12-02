@@ -40,8 +40,11 @@ public class EditTodoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String tempId = req.getParameter("id");
         String tempDesc = req.getParameter("description");
+        String name_account = req.getParameter("name");
+
         req.setAttribute("id",tempId);
         req.setAttribute("description",tempDesc);
+        req.setAttribute("name",name_account);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/edit-todo.jsp");
         dispatcher.forward(req, resp);
@@ -61,9 +64,10 @@ public class EditTodoServlet extends HttpServlet {
             preparedStmt = myConn.prepareStatement(query);
             preparedStmt.setString(1, newDescription);
             preparedStmt.setString(2, idTodo);
-            preparedStmt.execute();
-            RequestDispatcher dispatcher = req.getRequestDispatcher("instructor-controller-servlet");
-            dispatcher.forward(req, resp);
+            preparedStmt.executeUpdate(query);
+            String name_account = req.getParameter("name");
+            req.setAttribute("name",name_account);
+            req.getRequestDispatcher("instructor-controller-servlet").forward(req, resp);
         }catch(Exception exc){
             System.out.println(exc.getMessage());
         } finally {

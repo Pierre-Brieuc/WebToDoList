@@ -3,29 +3,4 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <security-constraint>
-        <display-name>Test d'authentification Tomcat</display-name>
-        <web-resource-collection>
-            <web-resource-name>ModifyTodos</web-resource-name>
-            <url-pattern>/createTodoServlet</url-pattern>
-            <url-pattern>/editTodoServlet</url-pattern>
-            <url-pattern>/deleteTodoServlet</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>admin</role-name>
-        </auth-constraint>
-        <user-data-constraint>
-            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-        </user-data-constraint>
-    </security-constraint>
-
-    <login-config>
-        <auth-method>FORM</auth-method>
-        <realm-name>Espaces membres</realm-name>
-        <form-login-config>
-            <form-login-page>/login.jsp</form-login-page>
-            <form-error-page>/erreur.jsp</form-error-page>
-        </form-login-config>
-    </login-config>
-
 </web-app>

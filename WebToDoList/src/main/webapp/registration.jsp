@@ -8,8 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Title</title>
+        <title>Registration</title>
     </head>
+
+    <% String errorMessage = (String)request.getAttribute("ERROR"); %>
+
     <body>
         <div align="center">
             <h1>Veuillez vous identifier</h1>
@@ -18,11 +21,11 @@
             <table align="center">
                 <tr>
                     <td>Login :</td>
-                    <td><input type="text" name="name"></td>
+                    <td><input type="text" name="name" required></td>
                 </tr>
                 <tr>
                     <td>Mot de passe :</td>
-                    <td><input type="password" name="password" value=""></td>
+                    <td><input type="password" name="password" value="" minlength="4" required></td>
                 </tr>
                 <tr>
                     <td>Role :</td>
@@ -36,8 +39,12 @@
                     <td colspan="2"><input type="submit" value="Valider"></td>
                     <td><input type="reset" value="Annuler"></td>
                 </tr>
+                <%if (errorMessage != null){%>
+                <p id="error"><%=errorMessage%></p>
+                <%};%>
             </table>
-            <a href="registration-servlet">Registration ?</a>
+            <a href="login-servlet">Login ?</a>
         </form>
+
     </body>
 </html>

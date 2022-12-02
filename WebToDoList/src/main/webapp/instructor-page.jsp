@@ -12,7 +12,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Instructor ${name}</title>
     <link type="text/css" rel="stylesheet" href="css/instructor-page.css">
 </head>
 
@@ -22,6 +22,7 @@
             <input type="submit" value="Log out"/>
         </form>
         <form action="create-todo-servlet">
+            <input type="hidden" name="name" value="${name}">
             <input type="submit" value="create new todo" formmethod="get"/>
         </form>
 
@@ -40,6 +41,7 @@
                     <c:forEach var="tempTodo" items="${TODO_LIST}" >
                     <tr>
                         <form>
+                            <input type="hidden" name="name" value="${name}">
                             <td><input type="hidden" class="input-instructor" name="id" value="${tempTodo.id_todo}"/>${tempTodo.id_todo}</td>
                             <td><input type="hidden" class="input-instructor" name="description" value="${tempTodo.description}"/>${tempTodo.description}</td>
                             <td colspan="2"><input type="submit" value="Edit" formmethod="get" formaction="edit-todo-servlet"></td>

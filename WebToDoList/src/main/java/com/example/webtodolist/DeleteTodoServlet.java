@@ -45,6 +45,8 @@ public class DeleteTodoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+            String name_account = req.getParameter("name");
+            req.setAttribute("name",name_account);
             listTodos(req,resp);
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,7 +74,9 @@ public class DeleteTodoServlet extends HttpServlet {
             preparedStmt.setString(1, idTodo);
             preparedStmt.execute();
             this.close(myConn, null, preparedStmt, null);
-            doGet(req,resp);
+            String name_account = req.getParameter("name");
+            req.setAttribute("name",name_account);
+            req.getRequestDispatcher("instructor-controller-servlet").forward(req, resp);
         }catch(Exception exc){
             System.out.println(exc.getMessage());
         }

@@ -79,10 +79,14 @@ public class RegistrationServlet extends HttpServlet {
                     }
                 } else {
                     // The password cannot be empty
+                    String errorMessage = "wrong username or password";
+                    req.setAttribute("ERROR",errorMessage);
                     doGet(req,resp);
                 }
             } else {
                 // The name is not available
+                String errorMessage = "The name is not available";
+                req.setAttribute("ERROR",errorMessage);
                 doGet(req,resp);
             }
         } catch (Exception e) {

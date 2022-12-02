@@ -10,28 +10,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16c76870-45ef-4de8-9f3c-f4c8548a4e4d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/instructor-page.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/edit-todo.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/erreur.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/logout.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/WebToDoList_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/WebToDoList_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webtodolist/CreateTodoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webtodolist/CreateTodoServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webtodolist/DeleteTodoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webtodolist/DeleteTodoServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webtodolist/EditTodoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webtodolist/EditTodoServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webtodolist/InstructorControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webtodolist/InstructorControllerServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webtodolist/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webtodolist/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webtodolist/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webtodolist/LogoutServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webtodolist/RegistrationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webtodolist/RegistrationServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webtodolist/StudentControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webtodolist/StudentControllerServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/create-todo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/create-todo.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/edit-todo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/edit-todo.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/instructor-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/instructor-page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/logout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/logout.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/registration.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/student-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/student-page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webtodolist_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../webtodolist_db.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +213,7 @@
       <workItem from="1669747525662" duration="7346000" />
       <workItem from="1669828843584" duration="766000" />
       <workItem from="1669845134610" duration="5061000" />
-      <workItem from="1669972036283" duration="22475000" />
+      <workItem from="1669972036283" duration="34823000" />
     </task>
     <servers />
   </component>

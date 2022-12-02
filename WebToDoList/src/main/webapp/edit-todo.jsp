@@ -12,7 +12,7 @@
 
 <html>
     <head>
-        <title>Title</title>
+        <title>${name}/Edit</title>
     </head>
 
     <body>
@@ -20,20 +20,20 @@
             <h1>Edit your todo</h1>
         </div>
         <form method="POST" action="edit-todo-servlet">
+            <input type="hidden" name="name" value="${name}">
             <table align="center">
                 <tr>
                     <td align="center">To do ${id}</td>
                 </tr>
                 <tr>
                     <td>Description :</td>
-                    <td><input type="text" name="password" value="${description}"></td>
+                    <td><input type="text" name="description" value="${description}"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="Valider"></td>
                     <td><input type="reset" value="Annuler"></td>
                 </tr>
             </table>
-            <a href="registration-servlet">Registration ?</a>
         </form>
     </body>
 </html>
