@@ -22,4 +22,3 @@ INSERT INTO todo VALUES (2,"Je suis");
 INSERT INTO todo VALUES (3,"lalala");
 
 UPDATE todo SET todo_description="a" WHERE id_todo="2";
-INSERT INTO todo(todo_description) VALUES ("dfsdfsdf") WHERE id_todo=1;

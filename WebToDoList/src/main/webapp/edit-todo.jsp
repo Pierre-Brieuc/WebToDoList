@@ -24,6 +24,7 @@
             <table align="center">
                 <tr>
                     <td align="center">To do ${id}</td>
+                    <input name="id" type="hidden" value="${id}"/>
                 </tr>
                 <tr>
                     <td>Description :</td>

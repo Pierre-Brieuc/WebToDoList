@@ -53,18 +53,18 @@ public class EditTodoServlet extends HttpServlet {
     // update todo
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String idTodo = req.getParameter("idTodo");
+        String idTodo = req.getParameter("id");
         String newDescription = req.getParameter("description");
         Connection myConn=null;
         PreparedStatement preparedStmt = null;
         try{
-            dataSource= getDataSource();
-            myConn= dataSource.getConnection();
+            dataSource = getDataSource();
+            myConn = dataSource.getConnection();
             String query = "UPDATE todo SET todo_description=? WHERE id_todo=?";
             preparedStmt = myConn.prepareStatement(query);
             preparedStmt.setString(1, newDescription);
             preparedStmt.setString(2, idTodo);
-            preparedStmt.executeUpdate(query);
+            preparedStmt.executeUpdate();
             String name_account = req.getParameter("name");
             req.setAttribute("name",name_account);
             req.getRequestDispatcher("instructor-controller-servlet").forward(req, resp);
