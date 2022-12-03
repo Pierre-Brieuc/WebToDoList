@@ -3,6 +3,7 @@
 <html>
   <head>
     <title>Login</title>
+    <link href="/css/login-registration.css" rel="stylesheet">
   </head>
   <% String errorMessage = (String)request.getAttribute("ERROR"); %>
   <body>
@@ -25,10 +26,10 @@
         </tr>
         <!-- ${ERROR}-->
         <%if (errorMessage != null){%>
-          <p id="error"><%=errorMessage%></p>
+          <tr><%=errorMessage%></tr>
         <%};%>
+        <tr><a href="registration-servlet">Registration ?</a></tr>
       </table>
-      <a href="registration-servlet">Registration ?</a>
     </form>
   </body>
 </html>

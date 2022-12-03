@@ -9,6 +9,7 @@
 <html>
     <head>
         <title>Registration</title>
+        <link href="/css/login-registration.css" rel="stylesheet">
     </head>
 
     <% String errorMessage = (String)request.getAttribute("ERROR"); %>
