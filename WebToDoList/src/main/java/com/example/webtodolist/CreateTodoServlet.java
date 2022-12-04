@@ -52,22 +52,28 @@ public class CreateTodoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String newDescription = req.getParameter("description");
-        Connection myConn=null;
-        PreparedStatement preparedStmt = null;
-        try{
-            dataSource = getDataSource();
-            myConn = dataSource.getConnection();
-            String query = "INSERT INTO todo(todo_description) VALUES (?)";
-            preparedStmt = myConn.prepareStatement(query);
-            preparedStmt.setString(1, newDescription);
-            preparedStmt.execute();
-            String name_account = req.getParameter("name");
-            req.setAttribute("name",name_account);
-            req.getRequestDispatcher("instructor-controller-servlet").forward(req, resp);
-        }catch(Exception exc){
-            System.out.println(exc.getMessage());
-        } finally {
-            this.close(myConn, null, preparedStmt, null);
+        if (!newDescription.equals("")) {
+            Connection myConn=null;
+            PreparedStatement preparedStmt = null;
+            try{
+                dataSource = getDataSource();
+                myConn = dataSource.getConnection();
+                String query = "INSERT INTO todo(todo_description) VALUES (?)";
+                preparedStmt = myConn.prepareStatement(query);
+                preparedStmt.setString(1, newDescription);
+                preparedStmt.execute();
+                String name_account = req.getParameter("name");
+                req.setAttribute("name",name_account);
+                req.getRequestDispatcher("instructor-controller-servlet").forward(req, resp);
+            }catch(Exception exc){
+                System.out.println(exc.getMessage());
+            } finally {
+                this.close(myConn, null, preparedStmt, null);
+            }
+        } else {
+            String errorMessage = "The description cannot be empty";
+            req.setAttribute("ERROR",errorMessage);
+            doGet(req, resp);
         }
     }
 

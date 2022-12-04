@@ -15,6 +15,8 @@
         <title>${name}/Edit</title>
     </head>
 
+    <% String errorMessage = (String)request.getAttribute("ERROR"); %>
+
     <body>
         <div align="center">
             <h1>Edit your todo</h1>
@@ -30,11 +32,19 @@
                     <td>Description :</td>
                     <td><input type="text" name="description" value="${description}"></td>
                 </tr>
+                <!-- ${ERROR}-->
+                <%if (errorMessage != null){%>
+                <tr><%=errorMessage%></tr>
+                <%};%>
                 <tr>
-                    <td colspan="2"><input type="submit" value="Valider"></td>
-                    <td><input type="reset" value="Annuler"></td>
+                    <td colspan="2"><input type="submit" value="Save"></td>
+                    <td><input type="reset" value="Cancel"></td>
                 </tr>
             </table>
+        </form>
+        <form action="instructor-controller-servlet" method="get">
+            <input type="hidden" name="name" value="${name}">
+            <input type="submit" value="Back">
         </form>
     </body>
 </html>

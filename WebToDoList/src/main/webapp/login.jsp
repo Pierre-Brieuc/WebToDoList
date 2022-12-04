@@ -28,8 +28,8 @@
         <%if (errorMessage != null){%>
           <tr><%=errorMessage%></tr>
         <%};%>
-        <tr><a href="registration-servlet">Registration ?</a></tr>
       </table>
     </form>
+    <a href="registration-servlet">Registration ?</a>
   </body>
 </html>

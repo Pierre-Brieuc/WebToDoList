@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.sql.Connection;
@@ -70,8 +71,12 @@ public class RegistrationServlet extends HttpServlet {
                         this.close(myConn, null, preparedStmt, null);
 
                         if (newRole.equals("instructor")){
+                            HttpSession session = req.getSession();
+                            req.setAttribute("name",newName);
                             req.getRequestDispatcher("/instructor-controller-servlet").forward(req, resp);
                         } else {
+                            HttpSession session = req.getSession();
+                            req.setAttribute("name",newName);
                             req.getRequestDispatcher("/student-controller-servlet").forward(req, resp);
                         }
                     }catch(Exception exc){
