@@ -3,7 +3,7 @@
 <html>
   <head>
     <title>Login</title>
-    <link href="/css/login-registration.css" rel="stylesheet">
+    <link href="css/login-registration.css" rel="stylesheet" type="text/css">
   </head>
   <% String errorMessage = (String)request.getAttribute("ERROR"); %>
   <body>
@@ -20,14 +20,14 @@
           <td>Mot de passe :</td>
           <td><input type="password" name="j_password" value="" minlength="4" required></td>
         </tr>
+        <!-- ${ERROR}-->
+        <%if (errorMessage != null){%>
+        <p><%=errorMessage%></p>
+        <%};%>
         <tr>
           <td colspan="2"><input type="submit" value="Valider"></td>
           <td><input type="reset" value="Annuler"></td>
         </tr>
-        <!-- ${ERROR}-->
-        <%if (errorMessage != null){%>
-          <tr><%=errorMessage%></tr>
-        <%};%>
       </table>
     </form>
     <a href="registration-servlet">Registration ?</a>

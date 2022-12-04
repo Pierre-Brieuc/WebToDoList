@@ -9,7 +9,7 @@
 <html>
     <head>
         <title>Registration</title>
-        <link href="/css/login-registration.css" rel="stylesheet">
+        <link href="css/login-registration.css" rel="stylesheet" type="text/css">
     </head>
 
     <% String errorMessage = (String)request.getAttribute("ERROR"); %>
@@ -36,16 +36,15 @@
                         </select>
                     </td>
                 </tr>
+                <%if (errorMessage != null){%>
+                <p id="error"><%=errorMessage%></p>
+                <%};%>
                 <tr>
                     <td colspan="2"><input type="submit" value="Valider"></td>
                     <td><input type="reset" value="Annuler"></td>
                 </tr>
-                <%if (errorMessage != null){%>
-                <p id="error"><%=errorMessage%></p>
-                <%};%>
             </table>
-            <a href="login-servlet">Login ?</a>
         </form>
-
+        <a href="login-servlet">Login ?</a>
     </body>
 </html>
