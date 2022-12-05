@@ -9,7 +9,7 @@
 <html>
     <head>
         <title>Registration</title>
-        <link href="css/login-registration.css" rel="stylesheet" type="text/css">
+        <link href="css/forms.css" rel="stylesheet" type="text/css">
     </head>
 
     <% String errorMessage = (String)request.getAttribute("ERROR"); %>
@@ -45,6 +45,8 @@
                 </tr>
             </table>
         </form>
-        <a href="login-servlet">Login ?</a>
+        <center>
+            <a href="login-servlet">Login ?</a>
+        </center>
     </body>
 </html>

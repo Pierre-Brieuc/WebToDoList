@@ -15,10 +15,12 @@ CREATE TABLE todo (
 	todo_description varchar(1000)
 );
 
+select * from account;
 select * from todo;
 
 INSERT INTO todo VALUES (1,"abc");
 INSERT INTO todo VALUES (2,"Je suis");
 INSERT INTO todo VALUES (3,"lalala");
 
-UPDATE todo SET todo_description="a" WHERE id_todo="2";
+INSERT INTO account VALUES (1,"Jean","1234","student");
+INSERT INTO account VALUES (2,"Jeanne","XXX","instructor");

@@ -3,7 +3,7 @@
 <html>
   <head>
     <title>Login</title>
-    <link href="css/login-registration.css" rel="stylesheet" type="text/css">
+    <link href="css/forms.css" rel="stylesheet" type="text/css">
   </head>
   <% String errorMessage = (String)request.getAttribute("ERROR"); %>
   <body>
@@ -30,6 +30,8 @@
         </tr>
       </table>
     </form>
-    <a href="registration-servlet">Registration ?</a>
+    <center>
+      <a href="registration-servlet">Registration ?</a>
+    </center>
   </body>
 </html>

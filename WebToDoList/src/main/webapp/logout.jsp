@@ -12,14 +12,15 @@
     <head>
         <META HTTP-EQUIV = "Pragma" CONTENT="no-cache">
         <title>Logout Page</title>
+        <link href="css/index.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
-        <h2>Are you sure to logout ?</h2>
-        <FORM METHOD=POST ACTION="login.jsp" NAME="logout">
-            <p>
+        <center><h2>Are you sure to logout ?</h2></center>
+        <center>
+            <form METHOD=POST ACTION="login.jsp" NAME="logout">
                 <input type="submit" name="logout" value="Logout">
-            </p>
-        </form>
+            </form>
+        </center>
     </body>
 </html>

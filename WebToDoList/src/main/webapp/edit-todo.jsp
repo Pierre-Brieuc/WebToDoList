@@ -13,6 +13,7 @@
 <html>
     <head>
         <title>${name}/Edit</title>
+        <link href="css/forms.css" rel="stylesheet" type="text/css">
     </head>
 
     <% String errorMessage = (String)request.getAttribute("ERROR"); %>
@@ -34,7 +35,7 @@
                 </tr>
                 <!-- ${ERROR}-->
                 <%if (errorMessage != null){%>
-                <tr><%=errorMessage%></tr>
+                <p><%=errorMessage%></p>
                 <%};%>
                 <tr>
                     <td colspan="2"><input type="submit" value="Save"></td>

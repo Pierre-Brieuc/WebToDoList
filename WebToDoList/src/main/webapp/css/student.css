@@ -1,0 +1,17 @@
+body {
+    margin:0;
+    background-color: aqua;
+}
+
+input{
+    cursor: pointer;
+}
+
+table {
+    border: 1px solid black;
+    background-color: beige;
+}
+
+#nameColTable {
+    background-color: cadetblue;
+}

@@ -10,33 +10,36 @@
 <html>
     <head>
         <title>Student ${name}</title>
+        <link href="css/student.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <h1>Student ${name}</h1>
-        <form action="logout-servlet" method="get">
-            <input type="submit" value="Log out"/>
-        </form>
+        <center>
+            <h1>Student ${name}</h1>
+            <form action="logout-servlet" method="get">
+                <input type="submit" value="Log out"/>
+            </form>
 
-        <div id="wrapper">
-            <div id="header">
-                <h2>List of todos</h2>
+            <div id="wrapper">
+                <div id="header">
+                    <h2>List of todos</h2>
+                </div>
             </div>
-        </div>
-        <div id="container">
-            <div id="content">
-                <table>
-                    <tr>
-                        <th>ID </th>
-                        <th>Description</th>
-                    </tr>
-                    <c:forEach var="tempTodo" items="${TODO_LIST}" >
-                        <tr>
-                            <td><input type="hidden" class="input-instructor" name="id" value="${tempTodo.id_todo}"/>${tempTodo.id_todo}</td>
-                            <td><input type="hidden" class="input-instructor" name="description" value="${tempTodo.description}"/>${tempTodo.description}</td>
+            <div id="container">
+                <div id="content">
+                    <table>
+                        <tr id="nameColTable">
+                            <th>ID </th>
+                            <th>Description</th>
                         </tr>
-                    </c:forEach>
-                </table>
+                        <c:forEach var="tempTodo" items="${TODO_LIST}" >
+                            <tr>
+                                <td><input type="hidden" class="input-instructor" name="id" value="${tempTodo.id_todo}"/>${tempTodo.id_todo}</td>
+                                <td><input type="hidden" class="input-instructor" name="description" value="${tempTodo.description}"/>${tempTodo.description}</td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
             </div>
-        </div>
+        </center>
     </body>
 </html>
