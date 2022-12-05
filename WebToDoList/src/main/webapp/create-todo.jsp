@@ -15,9 +15,10 @@
     <% String errorMessage = (String)request.getAttribute("ERROR"); %>
 
     <body>
-    <div align="center">
-        <h1>Create your todo</h1>
-    </div>
+    <center>
+        <div>
+            <h1>Create your todo</h1>
+        </div>
         <form method="POST" action="create-todo-servlet">
             <input type="hidden" name="name" value="${name}">
             <table align="center">
@@ -39,5 +40,6 @@
             <input type="hidden" name="name" value="${name}">
             <input type="submit" value="Back">
         </form>
+    </center>
     </body>
 </html>

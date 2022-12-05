@@ -10,19 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16c76870-45ef-4de8-9f3c-f4c8548a4e4d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/instructor.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/student.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/create-todo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/create-todo.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/instructor-page.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/login-registration.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/forms.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/instructor.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/instructor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/student.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/student.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/edit-todo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/edit-todo.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/instructor-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/instructor-page.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/logout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/logout.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/registration.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/student-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/student-page.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -222,7 +215,7 @@
       <workItem from="1670142330706" duration="5604000" />
       <workItem from="1670188522069" duration="3712000" />
       <workItem from="1670234333662" duration="2771000" />
-      <workItem from="1670247347705" duration="7994000" />
+      <workItem from="1670247347705" duration="12400000" />
     </task>
     <servers />
   </component>

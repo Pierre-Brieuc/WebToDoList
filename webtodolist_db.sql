@@ -18,9 +18,9 @@ CREATE TABLE todo (
 select * from account;
 select * from todo;
 
-INSERT INTO todo VALUES (1,"abc");
-INSERT INTO todo VALUES (2,"Je suis");
-INSERT INTO todo VALUES (3,"lalala");
+INSERT INTO todo VALUES (1,"Maths");
+INSERT INTO todo VALUES (2,"French");
+INSERT INTO todo VALUES (3,"Exercise 12 page 40 English");
 
 INSERT INTO account VALUES (1,"Jean","1234","student");
-INSERT INTO account VALUES (2,"Jeanne","XXX","instructor");
+INSERT INTO account VALUES (2,"Jeanne","XXXX","instructor");

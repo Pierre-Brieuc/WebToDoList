@@ -14,27 +14,29 @@
     </head>
     <body>
         <center>
-            <h1>Student ${name}</h1>
-            <form action="logout-servlet" method="get">
+            <div class="titre">
+                <span class="titre1">Bienvenue M./Mme ${name}</span>
+            </div>
+            <form class="logout" action="logout-servlet" method="get">
                 <input type="submit" value="Log out"/>
             </form>
 
             <div id="wrapper">
                 <div id="header">
-                    <h2>List of todos</h2>
+                    <h2 class="liste">List of todos</h2>
                 </div>
             </div>
             <div id="container">
                 <div id="content">
                     <table>
-                        <tr id="nameColTable">
-                            <th>ID </th>
-                            <th>Description</th>
+                        <tr>
+                            <th class="id">ID </th>
+                            <th class="description">Description</th>
                         </tr>
                         <c:forEach var="tempTodo" items="${TODO_LIST}" >
                             <tr>
-                                <td><input type="hidden" class="input-instructor" name="id" value="${tempTodo.id_todo}"/>${tempTodo.id_todo}</td>
-                                <td><input type="hidden" class="input-instructor" name="description" value="${tempTodo.description}"/>${tempTodo.description}</td>
+                                <td><input type="hidden" class="input-instructor" name="id" value="${tempTodo.id_todo}"/><center>${tempTodo.id_todo}</center></td>
+                                <td><input type="hidden" class="description1" name="description" value="${tempTodo.description}"/><center>${tempTodo.description}</center></td>
                             </tr>
                         </c:forEach>
                     </table>
@@ -43,3 +45,4 @@
         </center>
     </body>
 </html>
+
